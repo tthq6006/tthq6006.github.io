@@ -1,136 +1,152 @@
-# SB Clean Blog Angular
+# [Start Bootstrap - Clean Blog Jekyll](https://startbootstrap.com/themes/clean-blog-jekyll/) - Official Jekyll Version
 
-[![Build Status](https://travis-ci.org/StartBootstrap/sb-clean-blog-angular.svg?branch=master)](https://travis-ci.org/StartBootstrap/sb-clean-blog-angular)
+[Clean Blog Jekyll](https://startbootstrap.com/themes/clean-blog-jekyll/) is a stylish, responsive blog theme for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/). This theme features a blog homepage, about page, contact page, and an example post page along with a working contact form powered by [Formspree](https://formspree.io/).
 
-SB Clean Blog Angular is a free and open-sourced Bootstrap themed Angular 9 starter project.
+This repository holds the official Jekyll version of the Clean Blog theme on Start Bootstrap!
 
-It shares the same project structure and subset of tooling from our professional offering,
-[SB Admin Pro Angular](https://themes.startbootstrap.com/sb-admin-pro-angular/),
-so much of the [SB Admin Pro Angular Documentation](https://docs.startbootstrap.com/sb-admin-pro-angular/quickstart) is applicable.
+## Preview
 
-In particular the documentation for [Structure](https://docs.startbootstrap.com/sb-admin-pro-angular/structure-root-level),
-and the documentation for [SBPro Schematics](https://docs.startbootstrap.com/sb-admin-pro-angular/development-general#sb-pro-schematics)
+[![Clean Blog (Jekyll) Preview](https://startbootstrap.com/assets/img/screenshots/themes/clean-blog-jekyll.png)](http://StartBootstrap.github.io/startbootstrap-clean-blog-jekyll/)
 
-SB Clean Blog Angular comes with a base implementation of navigation and layouts.
+**[View Live Preview](http://StartBootstrap.github.io/startbootstrap-clean-blog-jekyll/)**
 
-For professionally designed components (including an advanced SideNav), 100% code coverage,
-starter cypress tests and more, please consider our professional offering:
-[SB Admin Pro Angular](https://themes.startbootstrap.com/sb-admin-pro-angular/)
+## Installation & Setup
 
-## Links
+### Using RubyGems
 
-[Click here for demo](https://sb-clean-blog.startbootstrap.com/)
+When installing the theme using RubyGems, demo images, posts, and pages are not included. Follow the instructions below for complete setup.
 
-[Click here for the backend.](https://github.com/StartBootstrap/sb-clean-blog-node)
-Built with Node.js, Typescript, Fastify, and TypeORM
+1. (Optional) Create a new Jekyll site: `jekyll new my-site`
+2. Replace the current theme in your `Gemfile` with `gem "jekyll-theme-clean-blog"`.
+3. Install the theme (run the command inside your site directory): `bundle install`
+4. Replace the current theme in your `_config.yml` file with `theme: jekyll-theme-clean-blog`.
+5. Build your site: `bundle exec jekyll serve`
 
-[Click here to view Angular code coverage](https://sb-clean-blog.startbootstrap.com/coverage/sb-clean-blog-angular/index.html)
+Assuming there are no errors and the site is building properly, follow these steps next:
 
-[Click here to view Node code coverage](https://sb-clean-blog.startbootstrap.com/coverage/sb-clean-blog-node/index.html)
+1. Create the following pages if they do not exist already (or change the extension of existing markdown files from `.md` to `.html`):
 
-## Quick Start
+   * `index.html` - set to `layout: home`
+   * `about.html` - set to `layout: page`
+   * `contact.html` - set to `layout: page`
+   * `posts/index.html` - set to `layout: page` (you will also need to create a `posts` directory)
 
-```bash
-git clone git@github.com:startbootstrap/sb-clean-blog-angular.git
-cd sb-clean-blog-angular
-npm install
-npm start
-```
+2. Configure the `index.html` front matter. Example:
 
-`npm start` should open a browser window to <http://localhost:4200>
+    ```markdown
+    ---
+    layout: home
+    background: '/PATH_TO_IMAGE'
+    ---
+    ```
 
-By default angular runs on port 4200. To change this port you can run:
+3. Configure the `about.html`, `contact.html`, and `posts/index.html` front matter. Example:
 
-```bash
-# This starts the development server on port 4205,
-# but you can use any port you'd like
-export PORT=4205 && npm start
-```
+    ```markdown
+    ---
+    layout: page
+    title: Page Title
+    description: This is the page description.
+    background: '/PATH_TO_IMAGE'
+    ---
+    ```
 
-### Why do I not see any posts?
+4. For each post in the `_posts` directory, update the front matter. Example:
 
-Be sure you have [sb-clean-blog-node](https://github.com/StartBootstrap/sb-clean-blog-node) running.
+    ```markdown
+    ---
+    layout: post
+    title: "Post Title"
+    subtitle: "This is the post subtitle."
+    date: YYYY-MM-DD HH:MM:SS
+    background: '/PATH_TO_IMAGE'
+    ---
+    ```
 
-### How do I create/update/delete posts?
+    For reference, look at the [demo repository](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll) to see how the files are set up.
 
-Navigate to <http://localhost:4200/auth/login> 
+5. Add the form to the `contact.html` page. Add the following code to your `contact.html` page:
 
-Use the password you set in the [sb-clean-blog-node](https://github.com/StartBootstrap/sb-clean-blog-node)
-.env file for: `DB_ROOT_USER_PASSWORD`
+    ```html
+    <form name="sentMessage" id="contactForm" novalidate>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label>Name</label>
+          <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+          <p class="help-block text-danger"></p>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label>Email Address</label>
+          <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+          <p class="help-block text-danger"></p>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+          <label>Phone Number</label>
+          <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+          <p class="help-block text-danger"></p>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label>Message</label>
+          <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+      </div>
+      <br>
+      <div id="success"></div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+      </div>
+    </form>
+    ```
 
-## Tests
+    Make sure you have the `email` setting in your `_config.yml` file set to a working email address! Once this is set, fill out the form and then check your email, verify the email address using the link sent to you by Formspree, and then the form will be working!
 
-### Unit Tests
+6. Build your site: `bundle exec jekyll serve`
 
-```bash
-npm run test
+### Using Core Files
 
-# To keep the test runner going as you devleop tests use:
-npm run test:dev
-```
+When using the core files, the demo images, posts, and pages are all included with the download. After following the instructions below, you can then go and change the content of the pages and posts.
 
-### e2e
+1. [Download](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/archive/master.zip) or Clone the repository.
+2. Update the following configuration settings in your `_config.yml` file:
+   - `baseurl`
+   - `url`
+   - `title`
+   - `email` (after setting this setting to a working email address, fill out the form on the contact page and send it - then check your email and verify the address and the form will send you messages when used)
+   - `description`
+   - `author`
+   - `twitter_username` (Optional)
+   - `facebook_username` (Optional)
+   - `github_username` (Optional)
+   - `linkedin_username` (Optional)
+   - `instagram_username` (Optional)
+3. Build your site: `bundle exec jekyll serve`
 
-```bash
-npm run e2e
+## Bugs and Issues
 
-# To run against currently running server instead of launching a new server
-npm run e2e:running
-```
+Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/issues) here on GitHub!
 
-## Production
+## About
 
-SB Clean Blog Angular comes with a production ready Dockerfile and build scripts.
+Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
-You can get Docker [here](https://www.docker.com/get-started)
+* <https://startbootstrap.com>
+* <https://twitter.com/SBootstrap>
 
-```bash
-# Be sure to build the app first
-npm run build
+Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**.
 
-# Then build the docker image
-npm run docker:build
+* <http://davidmiller.io>
+* <https://twitter.com/davidmillerskt>
+* <https://github.com/davidtmiller>
 
-# Then run the image
-npm run docker:run
-```
+Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-## Generate Code
+## Copyright and License
 
-```bash
-npm run generate:module -- --path src/modules --name Test
-npm run generate:component -- --path src/modules/test/containers --name Test
-npm run generate:component -- --path src/modules/test/components --name Test
-npm run generate:directive -- --path src/modules/test/directives --name Test
-npm run generate:service -- --path src/modules/test/services --name Test
-```
-
-_Note: Creating a Component and a Container use the same command,
-the difference is just the paths and how they are used._
-
-### MVCC
-
-Containers and Components are both Angular Components, but used in different ways.
-
-Containers should arrange Components.
-
-Obviously this can become subjective, but MVCC is the paradigm that we subscribe to.
-
-## Troubleshooting
-
-### npm start
-
-If you receive memory issues adjust
-`max_old_space_size` in the `ng` command of the `package.json`:
-
-```json
-"ng": "cross-env NODE_OPTIONS=--max_old_space_size=2048 ./node_modules/.bin/ngngu",
-```
-
-You can adjust 2048 to any number you need.
-
-For more information about why you may need `--max_old_space_size`
-see [this article](https://medium.com/@ashleydavis75/node-js-memory-limitations-30d3fe2664c0).
-
-Keep in mind that this project only uses node to build the angular application.
-There is no production dependency on node.
+Copyright 2013-2020 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll/blob/gh-pages/LICENSE) license.
